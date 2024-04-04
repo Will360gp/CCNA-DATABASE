@@ -10,8 +10,8 @@ ___________________________________________________________
 
     ip default-gateway 192.168.0.1
 
-    ip routing                         ----- para que cree la tabla de rutas
-    no switchport                      ----- para que el puerto puede tomar ip y poder enrutar 
+    ip routing          ----- para que cree la tabla de rutas
+    no switchport       ----- para que el puerto puede tomar ip y poder enrutar 
 
     \\\\\\\\\\\\\\\\\\\\\
     TRUNK
@@ -79,14 +79,6 @@ _________________________________________________________
 
 
 
-
-
-
-
-
-
-
-
 VLAN - VTP
 ___________________________________________________________
     VTP mode server
@@ -96,6 +88,8 @@ ___________________________________________________________
     
     vtp mode client
     vtp domain cisco.com
+
+
 
 
 HSRP      Protocolo de redundancia
@@ -118,6 +112,8 @@ ____________________________________________________
 
 
 
+
+
 Etherchannel
 _________________________________________________________________
 
@@ -130,8 +126,69 @@ _________________________________________________________________
 
 
 
-    
-    
-    
 
-  
+LLDP Protocolo de decubrimiento de dispocitivos  como el CDP pero este es de estandar abierto
+___________________________________________________________________
+    lldp run -- para activar el protocolo
+    lldp holdtime 120
+    lldo reinit 2
+    lldp timer 30
+    int f/ 
+        lldp transmit
+        lldp recive
+
+    sh lldp int
+    show lldp int f/
+    sh llpd neighbors detail
+
+
+    
+CDP --- protocolo de cisco Cisco discovery protocol
+____________________________________________________________________
+    viebe habilitada ya por defecto, pero si queremos restringirlo para        que no envia paqutes de informacion a otra red lo configuramos asi
+
+    (Config)# No cdp run 
+    
+    int g/
+        no cdp enable
+
+
+
+
+  Router On Stick
+___________________________________________________________________
+
+    interface FastEthernet 0/0.1 
+    -------- sub interface
+
+
+
+
+
+Router
+__________________________________________________________________
+    Show ip interface brief
+    Show ip interface
+
+
+
+
+
+
+STP  Spanning Tree Protocol
+__________________________________________________________________
+
+    Show spanning-tree  -----  aqui podemos ver cual es el sw bridge y costo de llegada etc
+    shw spanning-tree interface fastethernet 0/10 portfast
+    PortFast            ---- te saltas el proceso de spanning tree pero es solo para host no para otros dispositivos por que no es recomendable
+        int f/
+        spanning-tree portfast
+        spanning-tree portfast trunk --- si es trunk el puerto
+        
+
+    -------------------Envia tramas llamadas BPDU------------------------
+
+
+
+
+
