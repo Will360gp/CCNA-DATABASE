@@ -171,6 +171,18 @@ __________________________________________________________________
     Show ip interface
 
 
+RIP  ---- Protocolo de RUTAS
+__________________________________________________________________
+
+
+
+
+
+
+Blanceo de Carga
+_________________________________________________________________
+
+
 
 
 
@@ -187,6 +199,54 @@ __________________________________________________________________
         
 
     -------------------Envia tramas llamadas BPDU------------------------
+
+
+
+OSPF
+___________________________________________________________________
+      Curso de OSPF  https://www.youtube.com/playlist?list=PL-Ml_Z_JW-XuyVdNKhTRSdzh6vO-jgO-O 
+
+    Show ip OSPF neighbor
+    Show ip OSPF database  -- nos va a mostrar todas la base de datos que esta en todos los routers por son iguales en todos
+    Show ip route
+
+    Router ID  -- si no colocamos manualmente un router ID el tomara el de una looback si no hay tomara la ip add mas alta
+        rputer ospf 1
+            router-id 1.1.1.1
+        
+            _________________________________________
+
+            Interfaces Pasivas
+            para que no envie OSPF hello, pero si seran anadidas a la red
+
+            route OSPF 1
+                passive-interface f/
+            Anucio de rutas para internet con rutas estaticas 0.0.0.0 0.0.0.0 192.168.2.1
+
+            METRICAS - COSTO DE INTERFACE
+            
+                metodo #1 
+                int f/
+                    ip ospf cost # 1-65500
+
+                metodo #2
+                dentro de la instancia
+                formula cost= reference Bandwidth / int Bandwidth
+                auto-cost reference-bandwidth #
+
+                metodo #3 no recomendado
+                 int f/
+                     bandwidth # 
+
+            
+
+
+
+
+
+
+
+
 
 
 
