@@ -179,7 +179,7 @@ __________________________________________________________________
 
 
 
-Blanceo de Carga
+Balanceo de Carga
 _________________________________________________________________
 
 
@@ -239,9 +239,48 @@ ___________________________________________________________________
                      bandwidth # 
 
             
+NAT  Network Address Traslation
+_______________________________________________________________________________________
+        Nat estatico///////////////////////////////////////////////////////////////////
+        por lo generarl se usa para los servidores
 
+        
+        para los hots
+        access-list 1 permit 10.0.0.0 0.255.255.255
 
+        INTERFACE DE RED LAN int f/
+            ip nat inside
 
+        En la interface que va para el ISP int f/
+            ip nat outside
+
+        Modo global #
+            ip nat inside source static ip_privada ip_publica
+            
+        Show Ip Nat Translation
+
+    Dinamica//////////////////////////////////////////////////////////////////////
+
+    INTERFACE DE RED LAN int f/
+            ip nat inside
+
+        En la interface que va para el ISP int f/
+            ip nat outside
+
+        ////////////////////////////// AHORA HAY QUE HACER UNA POOL, y colocamos una direccion de inicio y una de final
+        
+        ip NAT pool "Name" 198.1.1.100 198.1.1.254 NETMASK 255.255.255.0
+        
+        access-list 1 permit 10.1.1.0 0.0.0.255
+
+        ip nat inside source list 1 pool "name" Overload
+
+        ip route 0.0.0.0 0.0.0.0 "IP de proveedor"
+        
+
+PAT  Port address traslation
+______________________________________________________________________________________
+    
 
 
 
