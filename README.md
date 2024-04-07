@@ -89,6 +89,9 @@ ___________________________________________________________
     vtp mode client
     vtp domain cisco.com
 
+    ////////////////////////
+    Vlan Nativa 
+    
 
 
 
@@ -237,6 +240,9 @@ ___________________________________________________________________
                 metodo #3 no recomendado
                  int f/
                      bandwidth # 
+
+
+            Show ip ospf interface g/ ----- tota la informacion de la interface con respecto al protocolo
 
             
 NAT  Network Address Traslation
