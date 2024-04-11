@@ -203,6 +203,9 @@ __________________________________________________________________
 
     -------------------Envia tramas llamadas BPDU------------------------
 
+        para cambiar la prioridad del spanning tree
+
+        Spanning-tree vlan 1 root primary 
 
 
 OSPF
